@@ -1,67 +1,95 @@
-<!-- <div>
-  <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+<h2 class="text-center">{{title}}</h2>
+<div class="d-flex justify-content-center">
+  <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" class="border rounded p-4">
     <div class="form-group">
-      <label for="fname">First Name:</label>
+        <label for="fname">First Name:</label>
+        <input
+          type="fname"
+          class="form-control"
+          id="fname"
+          name="fname"
+          required
+          [(ngModel)]="fname"
+        />
+        <div
+          *ngIf="
+          signupForm.controls['fname'].invalid &&
+          signupForm.controls['fname'].touched
+          "
+          class="text-danger"
+        >
+          First Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name:</label>
+        <input
+          type="lname"
+          class="form-control"
+          id="lname"
+          name="lname"
+          required
+          [(ngModel)]="lname"
+        />
+        <div
+          *ngIf="
+          signupForm.controls['lname'].invalid &&
+          signupForm.controls['lname'].touched
+          "
+          class="text-danger"
+        >
+          Last Name is required
+        </div>
+      </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
       <input
-        type="fname"
+        type="email"
         class="form-control"
-        id="fname"
-        name="fname"
+        id="email"
+        name="email"
         required
-        [(ngModel)]="fname"
+        [(ngModel)]="email"
       />
       <div
         *ngIf="
-          signupForm.controls['fname'].invalid &&
-          signupForm.controls['fname'].touched
+        signupForm.controls['email'].invalid &&
+        signupForm.controls['email'].touched
         "
+        class="text-danger"
       >
-        First name is required
+        Email is required
       </div>
     </div>
     <div class="form-group">
-      <label for="lname">Last Name:</label>
+      <label for="password">Password:</label>
       <input
-        type="lname"
+        type="password"
         class="form-control"
-        id="lname"
-        name="lname"
+        id="password"
+        name="password"
         required
-        [(ngModel)]="lname"
+        [(ngModel)]="password"
       />
+      <div
+        *ngIf="
+        signupForm.controls['password'].invalid &&
+        signupForm.controls['password'].touched
+        "
+        class="text-danger"
+      >
+        Password is required
+      </div>
     </div>
-
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          name="email"
-          required
-          [(ngModel)]="email"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          name="password"
-          required
-          [(ngModel)]="password"
-        />
-      </div>
     <br />
     <button
       type="submit"
-      class="btn btn-primary"
+      class="btn btn-primary d-block mx-auto"
       [disabled]="signupForm.invalid"
     >
       Submit
     </button>
   </form>
 </div>
- -->
+
+

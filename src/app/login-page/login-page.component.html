@@ -1,6 +1,6 @@
-<h2>{{ title }}</h2>
-<div>
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+<h2 class="text-center">{{title}}</h2>
+<div class="d-flex justify-content-center">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="border rounded p-4">
     <div class="form-group">
       <label for="email">Email:</label>
       <input
@@ -16,6 +16,7 @@
           loginForm.controls['email'].invalid &&
           loginForm.controls['email'].touched
         "
+        class="text-danger"
       >
         Email is required
       </div>
@@ -30,14 +31,26 @@
         required
         [(ngModel)]="password"
       />
+      <div
+        *ngIf="
+          loginForm.controls['password'].invalid &&
+          loginForm.controls['password'].touched
+        "
+        class="text-danger"
+      >
+        Password is required
+      </div>
     </div>
     <br />
     <button
       type="submit"
-      class="btn btn-primary"
+      class="btn btn-primary  d-block mx-auto"
       [disabled]="loginForm.invalid"
     >
       Submit
     </button>
+    <div class="text-center mt-3">
+      Don't have an account? <a href="/signup">Register here</a>
+    </div>
   </form>
 </div>
