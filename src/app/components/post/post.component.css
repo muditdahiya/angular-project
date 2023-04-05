@@ -1,0 +1,28 @@
+.Post {
+  max-width: 50vw;
+  width: 100%;
+  background-color: #d8c2a266;
+  border-radius: 10px;
+  margin: 20px auto 0;
+  padding: 20px 40px;
+}
+.Post hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.Post h1 {
+  margin-bottom: 5px;
+}
+.Post-username {
+  font-style: italic;
+  margin-bottom: 0;
+}
+.Post-tags {
+  color: gray;
+  margin-bottom: 0;
+}
+.Post-content {
+  margin-top: 10px;
+
+  font-size: 1.3em;
+}
