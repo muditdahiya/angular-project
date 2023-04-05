@@ -1,0 +1,15 @@
+.Home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Home h1 {
+  margin-bottom: 30px;
+}
+
+.Home input {
+  min-width: 200px;
+  /* max-width: 50%; */
+}
