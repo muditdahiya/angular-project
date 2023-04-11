@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IPost } from '../interfaces/Post';
+import { BackendServiceService } from '../services/backend-service.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,14 +11,20 @@ import { IPost } from '../interfaces/Post';
 })
 export class HomePageComponent implements OnInit {
   posts$!: Observable<IPost[]>;
+  title = 'Article by Jeetendra';
+  posts: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: BackendServiceService) {}
 
   ngOnInit(): void {
-    this.posts$ = this.http.get<IPost[]>(
-      'http://muditdahiya.com/web-backend/api/posts'
+    this.http.getPosts().subscribe(
+      (response) => {
+        this.posts = response;
+        console.log(this.posts);
+      },
+      (error) => {
+        console.log(error);
+      }
     );
-    // .map((data) => _.values(data))
-    // .do(console.log);
   }
 }
