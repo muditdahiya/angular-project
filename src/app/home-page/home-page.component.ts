@@ -9,9 +9,7 @@ import { BackendServiceService } from '../services/backend-service.service';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  posts$!: Observable<IPost[]>;
-  title = 'Article by Jeetendra';
-  posts: any;
+  posts!: IPost[] | any;
 
   constructor(private http: BackendServiceService) {}
 
