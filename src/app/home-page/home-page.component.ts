@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IPost } from '../interfaces/Post';
 import { BackendServiceService } from '../services/backend-service.service';
