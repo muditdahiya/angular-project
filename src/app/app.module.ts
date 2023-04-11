@@ -16,6 +16,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { SingupPageComponent } from './singup-page/singup-page.component';
 import { PostComponent } from './components/post/post.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { FavouritesComponent } from './components/favourites/favourites.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     SingupPageComponent,
     PostComponent,
     NavigationComponent,
+    FavouritesComponent,
   ],
   imports: [
     BrowserModule,

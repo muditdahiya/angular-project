@@ -1,1 +1,79 @@
-<p>profile-page works!</p>
+<form [formGroup]="accountInfoReactive" (ngSubmit)="updateAccount()">
+  <!-- FIRST NAME -->
+  <div class="form-group">
+    <label for="fname">First Name: </label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="fname"
+      id="fname"
+      name="fname"
+      placeholder="First Name"
+    />
+    <div
+      *ngif="
+        accountInfoReactive.controls['fname'].invalid &&
+        accountInfoReactive.controls['fname'].touched
+      "
+      class="red"
+    >
+      First name is required
+    </div>
+  </div>
+
+  <!-- LAST NAME -->
+  <div class="form-group">
+    <label for="lname">Last Name: </label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="lname"
+      id="lname"
+      name="lname"
+      placeholder="Last Name"
+    />
+    <div
+      *ngif="
+        accountInfoReactive.controls['lname'].invalid &&
+        accountInfoReactive.controls['lname'].touched
+      "
+      class="red"
+    >
+      Last name is required
+    </div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="form-group">
+    <label for="email">Email: </label>
+    <input
+      type="email"
+      class="form-control"
+      formControlName="email"
+      id="email"
+      name="email"
+      placeholder="Email"
+    />
+    <div
+      *ngif="
+        accountInfoReactive.controls['email'].invalid &&
+        accountInfoReactive.controls['email'].touched
+      "
+      class="red"
+    >
+      Email is required
+    </div>
+  </div>
+  <br />
+
+  <!-- SUBMIT BUTTON -->
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="accountInfoReactive.invalid"
+    >
+      Update
+    </button>
+  </div>
+</form>
