@@ -1,4 +1,10 @@
-<div class="Post">
+<div
+  class="Post"
+  *ngIf="
+    post?.username?.toLowerCase()?.includes(userFilter.toLowerCase()) &&
+    post?.title?.toLowerCase()?.includes(titleFilter.toLowerCase())
+  "
+>
   <h1 class="Post-title">{{ post?.title }}</h1>
   <p class="Post-username">by {{ post?.username }} at {{ post?.date }}</p>
   <hr />

@@ -8,4 +8,6 @@ import { IPost } from 'src/app/interfaces/Post';
 })
 export class PostComponent {
   @Input() post: IPost | undefined;
+  @Input() userFilter: string = '';
+  @Input() titleFilter: string = '';
 }
