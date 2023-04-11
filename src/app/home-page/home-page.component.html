@@ -15,5 +15,5 @@
     ngModel
     #username="ngModel"
   />
-  <app-post></app-post>
+  <app-post *ngFor="let post of posts" [post]="post"></app-post>
 </div>

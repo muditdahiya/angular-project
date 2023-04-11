@@ -3,6 +3,6 @@ export interface IPost {
   content: string;
   date: Date;
   username: string;
-  postID: string;
+  _id: string;
   tags: string[];
 }

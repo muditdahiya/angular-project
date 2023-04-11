@@ -9,19 +9,14 @@ import { BackendServiceService } from '../services/backend-service.service';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  posts!: IPost[] | any;
+  posts!: IPost[];
 
   constructor(private http: BackendServiceService) {}
 
-  ngOnInit(): void {
-    this.http.getPosts().subscribe(
-      (response) => {
-        this.posts = response;
-        console.log(this.posts);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  ngOnInit() {
+    this.http.getPosts().subscribe((posts) => {
+      this.posts = posts;
+      console.log(posts);
+    });
   }
 }

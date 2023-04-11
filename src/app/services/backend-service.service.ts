@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, map, tap } from 'rxjs';
+import { IPost } from '../interfaces/Post';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +11,7 @@ export class BackendServiceService {
 
   private url = 'http://muditdahiya.com/web-backend';
 
-  getPosts() {
-    return this.http.get(this.url + '/api/posts');
+  getPosts(): Observable<IPost[]> {
+    return this.http.get<IPost[]>(this.url + '/api/posts');
   }
 }
