@@ -36,12 +36,13 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/contactus"> ContactUs </a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="/" onClick="{auth.logout}"> Logout </a>
-        </li> -->
-        <li class="nav-item">
+        <li  *ngIf="!isLoggedIn" class="nav-item">
           <a class="nav-link" routerLink="/login"> Login </a>
         </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" routerLink="/logout">Logout</a>
+        </li>
+        
       </ul>
     </div>
   </nav>
