@@ -9,6 +9,9 @@ import { IAuth } from '../interfaces/IAuth';
   providedIn: 'root'
 })
 export class AuthService {
+  static getItem(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 

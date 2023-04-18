@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'contactus', component: ContactPageComponent },
-  {path: 'addpost',component: AddPostPageComponent}
+  {path: 'addpost',component: AddPostPageComponent},
   {path:'logout',component:LogoutComponent}
 ];
 
