@@ -19,6 +19,7 @@ export class MyPostsPageComponent implements OnInit {
   ngOnInit() {
     this.http.getPosts().subscribe((posts) => {
       console.log(posts);
+      console.log(this.authService.userInfo.email);
 
       this.posts = posts.filter(
         (post) => post.username === this.authService.userInfo.email
