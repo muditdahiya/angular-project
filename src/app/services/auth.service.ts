@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap,catchError } from 'rxjs';
+import { tap, catchError } from 'rxjs';
 import { IAuth } from '../interfaces/IAuth';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   static getItem(arg0: string) {
@@ -16,6 +15,8 @@ export class AuthService {
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   private url: string = 'http://muditdahiya.com/web-backend/login';
+
+  userInfo: any = {};
 
   constructor(private http: HttpClient) {
     const mytoken = localStorage.getItem('authToken');
@@ -29,8 +30,8 @@ export class AuthService {
       })
       .pipe(
         tap((response: any) => {
-            localStorage.setItem('authToken', response.token);
-            this._isLoggedIn$.next(true);
+          localStorage.setItem('authToken', response.token);
+          this._isLoggedIn$.next(true);
         })
       );
   }
@@ -38,7 +39,7 @@ export class AuthService {
     this._isLoggedIn$.next(false);
     localStorage.removeItem('authToken');
   }
-  
+
   mytoken = localStorage.getItem('authToken');
   httpOptions = {
     headers: new HttpHeaders({
@@ -46,5 +47,4 @@ export class AuthService {
       'x-auth-token': this.mytoken!,
     }),
   };
-
 }

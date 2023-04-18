@@ -11,23 +11,20 @@ import { AuthService } from '../services/auth.service';
 export class MyPostsPageComponent implements OnInit {
   posts!: IPost[];
 
-  constructor(private http: BackendServiceService) {}
+  constructor(
+    private http: BackendServiceService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     const username = localStorage.getItem('email'); // Get username from localStorag e
     console.log(username);
     this.http.getPosts().subscribe((posts) => {
-      // Filter posts by username
-      this.posts = posts.filter(post => post._id === username);
+      console.log(posts);
 
-      // // Sort posts by latest first
-      // this.posts.sort((a, b) => {
-      //   const dateA = new Date(a.createdAt);
-      //   const dateB = new Date(b.createdAt);
-      //   return dateB.getTime() - dateA.getTime();
-      // });
-
-      console.log(this.posts);
+      this.posts = posts.filter(
+        (post) => post.username === this.authService.userInfo.email
+      );
     });
   }
 
