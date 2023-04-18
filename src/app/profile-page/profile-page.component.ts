@@ -1,36 +1,63 @@
-import { Component } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { BackendServiceService } from '../services/backend-service.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css'],
 })
-export class ProfilePageComponent {
+export class ProfilePageComponent implements OnInit {
   title = 'Profile';
-  fname = '';
-  lname = '';
-  email = '';
-  accountInfo = [{}];
+  fname = this.authService.userInfo.fname;
+  lname = this.authService.userInfo.lname;
+  email = this.authService.userInfo.email;
+  id = this.authService.userInfo._id;
+  errorMessage: string = '';
 
-  deleteAccount() {
-    console.log('====================================');
-    console.log('Account has been deleted');
-    console.log('====================================');
+  profile = [{}];
+
+  constructor(
+    private http: BackendServiceService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit() {
+    this.profileForm.controls['fname'].setValue(this.fname);
+    this.profileForm.controls['lname'].setValue(this.lname);
+    this.profileForm.controls['email'].setValue(this.email);
   }
 
-  accountInfoReactive = new FormGroup({
-    fname: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    lname: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+  profileForm = new FormGroup({
+    fname: new FormControl<string | null>('', [Validators.required]),
+    lname: new FormControl<string | null>('', [Validators.required]),
+    email: new FormControl<string | null>('', [
+      Validators.required,
+      Validators.email,
+    ]),
   });
 
   updateAccount() {
-    this.accountInfo.push({
-      fname: this.accountInfoReactive.value.fname!,
-      lname: this.accountInfoReactive.value.lname!,
-      email: this.accountInfoReactive.value.email!,
+    this.profile.push({
+      fname: this.profileForm.value.fname!,
+      lname: this.profileForm.value.lname!,
+      email: this.profileForm.value.email!,
     });
+
+    this.http
+      .updateUser(
+        this.profileForm.value.fname!,
+        this.profileForm.value.lname!,
+        this.profileForm.value.email!,
+        this.id
+      )
+      .subscribe({
+        error: (e) => {
+          console.error();
+          this.errorMessage = e.error.errors;
+        },
+      });
 
     console.log('====================================');
     console.log('Account has been updated');

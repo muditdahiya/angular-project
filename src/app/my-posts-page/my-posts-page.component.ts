@@ -22,6 +22,15 @@ export class MyPostsPageComponent implements OnInit {
   //   this.http.getPosts().subscribe((posts) => {
   //     console.log(posts);
 
+
+
+  // ngOnInit() {
+  //   this.http.getPosts().subscribe((posts) => {
+  //     console.log(posts);
+  //     console.log(this.authService.userInfo.email);
+  //   }
+
+  
   //     this.posts = posts.filter(
   //       (post) => post.username === this.authService.userInfo.email,
 
@@ -40,6 +49,7 @@ export class MyPostsPageComponent implements OnInit {
     console.log(username);
     this.http.getPosts().subscribe((posts: IPost[]) => {
       console.log(posts);
+      console.log(this.authService.userInfo.email);
   
       this.posts = posts.filter(
         (post: IPost) => post.username === this.authService.userInfo.email
