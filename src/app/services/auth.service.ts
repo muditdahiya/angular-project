@@ -27,8 +27,13 @@ export class AuthService {
       })
       .pipe(
         tap((response: any) => {
-          localStorage.setItem('authToken', response.token);
-          this._isLoggedIn$.next(true);
+          if (response == false) {
+            alert('wrong password');
+            this.logout();
+          } else {
+            localStorage.setItem('authToken', response.token);
+            this._isLoggedIn$.next(true);
+          }
         })
       );
   }
