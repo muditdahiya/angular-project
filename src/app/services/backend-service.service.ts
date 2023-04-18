@@ -22,13 +22,19 @@ export class BackendServiceService {
     return this.http.get<IPost[]>(this.url + `/api/favs/${email}`);
   }
 
-  addFavs(username: string, postID: string): Observable<IFavourite[]> {
+  addFav(email: string, postID: string): Observable<IFavourite[]> {
     return this.http
       .post<IFavourite[]>(this.url + `/api/add-fav/${postID}`, {
-        username: username,
+        username: email,
         postID: postID,
       })
       .pipe(tap((response: any) => response.json()));
+  }
+
+  deleteFav(email: string, postID: string): Observable<IFavourite[]> {
+    return this.http.delete<IFavourite[]>(
+      this.url + `/api/delete-fav/${email}/${postID}`
+    );
   }
 
   sendcontactus(data: IContactUs[]): Observable<any> {

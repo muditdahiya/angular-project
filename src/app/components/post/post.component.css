@@ -45,6 +45,14 @@
   --star-color: #00000083;
 }
 
+.active {
+  --star-color: #00000083;
+}
+
+.active:hover {
+  --star-color: #a3a3a349;
+}
+
 .five-pointed-star:before {
   border-bottom: 0.8em solid var(--star-color);
   border-left: 0.3em solid transparent;

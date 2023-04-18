@@ -9,8 +9,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./favourites-page.component.css'],
 })
 export class FavouritesPageComponent implements OnInit {
-  favs!: IPost[];
-  title = 'Favourites';
+  posts!: IPost[];
   email = this.authService.userInfo.email;
 
   constructor(
@@ -20,8 +19,7 @@ export class FavouritesPageComponent implements OnInit {
 
   ngOnInit() {
     this.http.getFavs(this.email).subscribe((favs) => {
-      this.favs = favs;
-      console.log(favs);
+      this.posts = favs;
     });
   }
 }

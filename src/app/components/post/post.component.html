@@ -11,6 +11,10 @@
   <p class="Post-tags">{{ post?.tags }}</p>
   <p class="Post-content">{{ post?.content }}</p>
   <div class="buttons">
-    <div role="button" class="five-pointed-star"></div>
+    <div
+      role="button"
+      class="five-pointed-star"
+      (click)="implementFav(post?._id)"
+    ></div>
   </div>
 </div>
