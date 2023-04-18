@@ -17,6 +17,7 @@ import { SingupPageComponent } from './singup-page/singup-page.component';
 import { PostComponent } from './components/post/post.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FavouritesComponent } from './components/favourites/favourites.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FavouritesComponent } from './components/favourites/favourites.componen
     PostComponent,
     NavigationComponent,
     FavouritesComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

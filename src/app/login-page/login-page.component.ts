@@ -1,27 +1,40 @@
-import { Component } from '@angular/core';
-import { NgForm,Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Component,OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { FormGroup,FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
+  errorMessage:string='';
  title="LOGIN"
- loginInfo=[{}];
- loginForm  = new FormGroup({
-  email: new FormControl('', [Validators.required, Validators.email]),
-  password: new FormControl('', Validators.required),
+ constructor(private authService: AuthService, private router: Router) {}
 
+
+ ngOnInit(): void {}
+
+loginForm = new FormGroup({
+  email: new FormControl<string | null>('', Validators.required),
+  password: new FormControl<string | null>('', Validators.required),
 });
+
 onSubmit() {
-  this.loginInfo.push({
-    email: this.loginForm.value.email!,
-    password: this.loginForm.value.password!,
-    
-  });
-  console.log(this.loginInfo);
+  this.authService
+    .login(this.loginForm.value.email!, this.loginForm.value.password!)
+    .subscribe({
+      next: (res) => {
+        console.log(res);
+        this.router.navigateByUrl('/');
+      },
+      error: (e) => {
+        console.error();
+        this.errorMessage = e.error.errors;
+      },
+    });
 }
 }
