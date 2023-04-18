@@ -1,76 +1,84 @@
-<form [formGroup]="profileForm" (ngSubmit)="updateAccount()">
-  <!-- FIRST NAME -->
-  <div class="form-group">
-    <label for="fname">First Name: </label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="fname"
-      id="fname"
-      name="fname"
-      placeholder="First Name"
-    />
-    <div
-      *ngIf="
-        profileForm.get('fname')?.invalid && profileForm.get('fname')?.touched
-      "
-      class="error"
-    >
-      First name is required
+<div class="container">
+  <h2 class="text-center">{{ title }}</h2>
+  <div>{{ errorMessage }}</div>
+  <form
+    [formGroup]="profileForm"
+    (ngSubmit)="updateAccount()"
+    class="border rounded p-4"
+  >
+    <!-- FIRST NAME -->
+    <div class="form-group">
+      <label for="fname">First Name: </label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="fname"
+        id="fname"
+        name="fname"
+        placeholder="First Name"
+      />
+      <div
+        *ngIf="
+          profileForm.get('fname')?.invalid && profileForm.get('fname')?.touched
+        "
+        class="error"
+      >
+        First name is required
+      </div>
     </div>
-  </div>
 
-  <!-- LAST NAME -->
-  <div class="form-group">
-    <label for="lname">Last Name: </label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="lname"
-      id="lname"
-      name="lname"
-      placeholder="Last Name"
-    />
-    <div
-      *ngIf="
-        profileForm.get('lname')?.invalid && profileForm.get('lname')?.touched
-      "
-      class="error"
-    >
-      Last name is required
+    <!-- LAST NAME -->
+    <div class="form-group">
+      <label for="lname">Last Name: </label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="lname"
+        id="lname"
+        name="lname"
+        placeholder="Last Name"
+      />
+      <div
+        *ngIf="
+          profileForm.get('lname')?.invalid && profileForm.get('lname')?.touched
+        "
+        class="error"
+      >
+        Last name is required
+      </div>
     </div>
-  </div>
 
-  <!-- EMAIL -->
-  <div class="form-group">
-    <label for="email">Email: </label>
-    <input
-      type="email"
-      class="form-control"
-      formControlName="email"
-      id="email"
-      name="email"
-      placeholder="Email"
-    />
-    <div
-      *ngIf="
-        profileForm.get('email')?.invalid && profileForm.get('email')?.touched
-      "
-      class="error"
-    >
-      Email is required
+    <!-- EMAIL -->
+    <div class="form-group">
+      <label for="email">Email: </label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+      />
+      <div
+        *ngIf="
+          profileForm.get('email')?.invalid && profileForm.get('email')?.touched
+        "
+        class="error"
+      >
+        Email is required
+      </div>
     </div>
-  </div>
-  <br />
+    <br />
 
-  <!-- SUBMIT BUTTON -->
-  <div class="form-group">
-    <button
-      type="submit"
-      class="btn btn-success"
-      [disabled]="profileForm.invalid"
-    >
-      Update
-    </button>
-  </div>
-</form>
+    <!-- SUBMIT BUTTON -->
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="profileForm.invalid"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

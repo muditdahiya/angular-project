@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map, tap } from 'rxjs';
 import { IPost } from '../interfaces/Post';
 import { IFavourite } from '../interfaces/Favourite';
-
+import { IUser } from '../interfaces/IUser';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class BackendServiceService {
   constructor(private http: HttpClient) {}
 
   private url = 'http://muditdahiya.com/web-backend';
-  
+
   getPosts(): Observable<IPost[]> {
     return this.http.get<IPost[]>(this.url + '/api/posts');
   }
@@ -30,7 +30,31 @@ export class BackendServiceService {
       })
       .pipe(tap((response: any) => response.json()));
   }
-  sendcontactus(data:IContactUs[]):Observable<any>{
-    return this.http.post<IContactUs[]>(this.url + '/contactus',data);
+
+  sendcontactus(data: IContactUs[]): Observable<any> {
+    return this.http.post<IContactUs[]>(this.url + '/contactus', data);
+  }
+
+  updateUser(
+    fname: string,
+    lname: string,
+    email: string,
+    id: string
+  ): Observable<any> {
+    return this.http
+      .put<IUser[]>(this.url + `/api/update-user/${id}`, {
+        fname: fname,
+        lname: lname,
+        email: email,
+      })
+      .pipe(
+        tap((response: any) => {
+          if (response == false) {
+            alert('something went wrong! Please try again');
+          } else {
+            alert('User updated successfully!');
+          }
+        })
+      );
   }
 }

@@ -14,6 +14,7 @@ export class ProfilePageComponent implements OnInit {
   lname = this.authService.userInfo.lname;
   email = this.authService.userInfo.email;
   id = this.authService.userInfo._id;
+  errorMessage: string = '';
 
   profile = [{}];
 
@@ -43,6 +44,20 @@ export class ProfilePageComponent implements OnInit {
       lname: this.profileForm.value.lname!,
       email: this.profileForm.value.email!,
     });
+
+    this.http
+      .updateUser(
+        this.profileForm.value.fname!,
+        this.profileForm.value.lname!,
+        this.profileForm.value.email!,
+        this.id
+      )
+      .subscribe({
+        error: (e) => {
+          console.error();
+          this.errorMessage = e.error.errors;
+        },
+      });
 
     console.log('====================================');
     console.log('Account has been updated');
