@@ -18,8 +18,8 @@ export class BackendServiceService {
     return this.http.get<IPost[]>(this.url + '/api/posts');
   }
 
-  getFavs(): Observable<IPost[]> {
-    return this.http.get<IPost[]>(this.url + '/api/favs');
+  getFavs(email: string): Observable<IPost[]> {
+    return this.http.get<IPost[]>(this.url + `/api/favs/${email}`);
   }
 
   addFavs(username: string, postID: string): Observable<IFavourite[]> {
