@@ -1,1 +1,35 @@
-<p>add-post-page works!</p>
+<h1>Create a new Blog Post</h1>
+<div class="container">
+    <form [formGroup]="postInfoReactive" class="form-horizontal text-left" (ngSubmit)="addPost()">
+      <div class="form-group">
+        <label for="title" class="col-sm-2 control-label">Title:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="title" id="title" name="title" placeholder="Enter Title of Blog Post">
+          <div *ngIf="postInfoReactive.controls['title'].invalid && postInfoReactive.controls['title'].touched" class="red">Title is required</div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="tags" class="col-sm-2 control-label">Tags:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="tags" id="tags" name="tags" placeholder="Enter the tags">
+          <div *ngIf="postInfoReactive.controls['tags'].invalid && postInfoReactive.controls['tags'].touched" class="red">Tags are required</div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="description" class="col-sm-2 control-label">Description:</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" formControlName="description" id="description" name="description" placeholder="Enter the description" rows="5" maxlength="1000"></textarea>
+          <div *ngIf="postInfoReactive.controls['description'].invalid && postInfoReactive.controls['description'].touched" class="red">Post Description cannot be empty!</div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary" [disabled]="postInfoReactive.invalid">Create Post</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

@@ -1,9 +1,36 @@
-<div class="MyPosts">
+<!-- <div class="MyPosts">
   <h1>My Posts</h1>
 
   <Button>Create Post</Button>
 
   <div class="content">
     <app-post *ngFor="let post of posts" [post]="post" />
+  </div>
+</div> -->
+
+<div class="MyPosts">
+  <h1>My Posts</h1>
+
+  <a href="/addpost"><Button>Create Post</Button></a>
+
+  <div class="content">
+    <div class="card-deck">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let post of posts">
+          <div class="card mb-4 box-shadow">
+            <div class="card-body">
+              <h5 class="card-title">{{post.title}}</h5>
+              <p class="card-text">{{post.content}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="/editpost/{{post.id}}"><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
+                  <a href="/deletepost/{{post.id}}"><button type="button" class="btn btn-sm btn-outline-secondary">Delete</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

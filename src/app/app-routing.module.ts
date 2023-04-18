@@ -8,6 +8,7 @@ import { MyPostsPageComponent } from './my-posts-page/my-posts-page.component';
 import { FavouritesPageComponent } from './favourites-page/favourites-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
+import { AddPostPageComponent } from './add-post-page/add-post-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'contactus', component: ContactPageComponent },
+  {path: 'addpost',component: AddPostPageComponent}
 ];
 
 @NgModule({
