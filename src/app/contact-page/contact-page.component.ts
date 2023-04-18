@@ -25,8 +25,8 @@ import { IContactUs } from './../interfaces/ContactUs';
     message: this.contactForm.value.message!
     }];
     console.log(data);
-    this.BackendServiceService.sendcontactus(data).subscribe(response => {
-      console.log(response);
-    });
+    // this.BackendServiceService.sendcontactus(data).subscribe(response => {
+    //   console.log(response);
+    // });
   }
   }

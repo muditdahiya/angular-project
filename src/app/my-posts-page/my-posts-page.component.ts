@@ -16,30 +16,43 @@ export class MyPostsPageComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {
-    const username = localStorage.getItem('email'); // Get username from localStorag e
-    console.log(username);
-    this.http.getPosts().subscribe((posts) => {
-      console.log(posts);
-
-      this.posts = posts.filter(
-        (post) => post.username === this.authService.userInfo.email
-      );
-    });
-  }
-
-
-
-
   // ngOnInit() {
+  //   const username = localStorage.getItem('email'); // Get username from localStorag e
+  //   console.log(username);
   //   this.http.getPosts().subscribe((posts) => {
-  //     this.posts = posts;
-
-  //     // TODO filter posts by username
-
   //     console.log(posts);
+
+  //     this.posts = posts.filter(
+  //       (post) => post.username === this.authService.userInfo.email,
+
+  //     // Sort posts by latest first
+  //     this.posts.sort((a, b) => {
+  //       const dateA = new Date(a.createdAt);
+  //       const dateB = new Date(b.createdAt);
+  //       return dateB.getTime() - dateA.getTime();
+  //     });
+
+  //     );
   //   });
   // }
+  ngOnInit() {
+    const username = localStorage.getItem('email'); // Get username from localStorage
+    console.log(username);
+    this.http.getPosts().subscribe((posts: IPost[]) => {
+      console.log(posts);
+  
+      this.posts = posts.filter(
+        (post: IPost) => post.username === this.authService.userInfo.email
+      );
+  
+      // Sort posts by latest first
+      this.posts.sort((a: IPost, b: IPost) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB.getTime() - dateA.getTime();
+      });
+    });
+  }
 }
 
 
