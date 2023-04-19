@@ -22,15 +22,12 @@ export class MyPostsPageComponent implements OnInit {
   //   this.http.getPosts().subscribe((posts) => {
   //     console.log(posts);
 
-
-
   // ngOnInit() {
   //   this.http.getPosts().subscribe((posts) => {
   //     console.log(posts);
   //     console.log(this.authService.userInfo.email);
   //   }
 
-  
   //     this.posts = posts.filter(
   //       (post) => post.username === this.authService.userInfo.email,
 
@@ -45,16 +42,14 @@ export class MyPostsPageComponent implements OnInit {
   //   });
   // }
   ngOnInit() {
-    const username = localStorage.getItem('email'); // Get username from localStorage
-    console.log(username);
     this.http.getPosts().subscribe((posts: IPost[]) => {
       console.log(posts);
       console.log(this.authService.userInfo.email);
-  
+
       this.posts = posts.filter(
         (post: IPost) => post.username === this.authService.userInfo.email
       );
-  
+
       // Sort posts by latest first
       this.posts.sort((a: IPost, b: IPost) => {
         const dateA = new Date(a.date);
@@ -64,6 +59,3 @@ export class MyPostsPageComponent implements OnInit {
     });
   }
 }
-
-
-
