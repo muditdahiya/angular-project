@@ -1,7 +1,7 @@
 <div class="content">
   <h1>Favourites</h1>
 
-  <div class="border rounded p-4">
+  <!-- <div class="border rounded p-4">
     <input
       placeholder="Search title"
       type="text"
@@ -19,12 +19,7 @@
       ngModel
       #username="ngModel"
     />
-  </div>
+  </div> -->
 
-  <app-post
-    *ngFor="let post of posts"
-    [post]="post"
-    [userFilter]="username.value"
-    [titleFilter]="title.value"
-  ></app-post>
+  <app-post *ngFor="let post of posts" [post]="post"></app-post>
 </div>

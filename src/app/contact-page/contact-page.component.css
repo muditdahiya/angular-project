@@ -1,5 +1,9 @@
-.error-message{
-    color:red;
-    font-size: 14px;
-    margin-top: 8px;
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.main {
+  width: 500px;
 }
