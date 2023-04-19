@@ -84,4 +84,8 @@ export class BackendServiceService {
         })
       );
   }
+
+  getAboutContent(): Observable<any> {
+    return this.http.get<any>(`${this.url}/api/about`);
+  }
 }
